@@ -91,3 +91,27 @@ func deleteBook(w http.ResponseWriter, r *http.Request){
 		}
 	}
 }
+
+func main() {
+
+	// Initialzie the rounters
+	rounter:= mux.NewRouter()
+
+	// Mock database @todo add database
+	books = append(books, Book{ID: "1", ISBN: "40234ghw034", Title: "The farm", 
+	Author: &Author{Firstname: "George", Lastname: "Owralled"}})
+
+	books = append(books, Book{ID: "2", ISBN: "40234ghw034325", Title: "The animalss", 
+	Author: &Author{Firstname: "A7med", Lastname: "Abogresha"}})
+
+
+	// Rounter's Endpoints
+	rounter.HandleFunc("/api/books",getBooks).Methods("GET")
+	rounter.HandleFunc("/api/books/{id}",getBook).Methods("GET")
+	rounter.HandleFunc("/api/books",createBook).Methods("POST")
+	rounter.HandleFunc("/api/books/{id}",updateBook).Methods("PUT")
+	rounter.HandleFunc("/api/books/{id}",deleteBook).Methods("DELETE")
+
+	
+	log.Fatal(http.ListenAndServe(":8080", rounter))
+}
