@@ -17,3 +17,9 @@ type Book struct {
 	Author *Author `json:"author"`
 }
 
+// Author object struct
+type Author struct {
+	Firstname string `json:"firstname"`
+	Lastname string `json:"lastname"`
+}
+
