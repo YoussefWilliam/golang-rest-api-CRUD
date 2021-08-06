@@ -1,5 +1,6 @@
 package main
 
+import (
 	"encoding/json"
 	"log"
 	"math/rand"
@@ -30,6 +31,7 @@ func getBooks(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(books)
 }
+// Get a specific book
 func getBook(w http.ResponseWriter, r *http.Request){
 	w.Header().Set("Content-Type", "application/json")
 	// Get the id from the request params
